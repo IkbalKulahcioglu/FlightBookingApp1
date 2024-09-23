@@ -1,35 +1,25 @@
 import axios from "axios";
 
-const API_BASE_URL = "/api/public-flights";
-const APP_ID = "41fea23e";
-const APP_KEY = "5b4e7c5a918002f3244a0c793ac4be75";
+const API_BASE_URL = "http://localhost:5000"; // Adjust this if your backend runs on a different port
 
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    Accept: "application/json",
-    app_id: APP_ID,
-    app_key: APP_KEY,
-    ResourceVersion: "v4",
-  },
-});
-
+// Function to fetch flights from the backend
 export const getFlights = async (params) => {
-    try {
-      const response = await api.get('/flights', { params });
-      return response.data;
-  
-    } catch (error) {
-      console.error("Error fetching flights:", error);
-      throw error;
-    }
-  };
-  
+  try {
+    const response = await axios.get(`${API_BASE_URL}/api/flights`, { params });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching flights:", error);
+    throw error;
+  }
+};
 
-export const filterFlights = async (date, direction) => {
-  const params = {
-    scheduleDate: date,
-    flightDirection: direction,
-  };
-  return getFlights(params);
+// Function to save flight reservations
+export const saveReservation = async (flight) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/api/reservations`, flight);
+    return response.data;
+  } catch (error) {
+    console.error("Error saving reservation:", error);
+    throw error;
+  }
 };
