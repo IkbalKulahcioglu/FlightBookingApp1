@@ -24,3 +24,4 @@ Anasayfa, Schiphol Uçuş API'si kullanılarak mevcut uçuşları listeler. Kull
 - Varış noktası/menşei
 
 # Ekran Görüntüleri
+<img src="./client/src/assets/home.png" >
