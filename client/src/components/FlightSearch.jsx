@@ -23,7 +23,7 @@ function FlightSearch() {
       // Flight search parameters
       const params = {
         scheduleDate: departDate,
-        flightDirection: from ? "A" : "D", // 'A' for arrival, 'D' for departure
+        flightDirection: from ? "D" : "A", // 'A' for arrival, 'D' for departure
       };
       // Fetch flights from API
       const flightData = await getFlights(params);
